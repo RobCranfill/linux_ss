@@ -5,19 +5,17 @@
 # Started process will be terminated at the first sight of user activity
 # You supposed to launch something like full-screen video or cmatrix :)
 
-start_after=5 # minutes
+start_after=1 # minutes
 
 # cran
 # cmd="mpv /home/test/Videos/after_dark.mp4 --fs --loop --no-osc"
 # cmd="python3 /home/rob/.local/nboids/nboids_ss.py"
 
-cmds[0]="python3 /home/rob/.local/screensaver/nboids.py"
-cmds[1]="python3 /home/rob/.local/screensaver/kali.py"
+ss_paths[0]="python3 /home/rob/.local/bin/screensaver/nboids.py"
+ss_paths[1]="python3 /home/rob/.local/bin/screensaver/kali.py"
 
-size=${#cmds[@]}
-index=$(($RANDOM % $size))
-cmd=${cmds[$index]}
-echo Screensaver command is $cmd
+ss_count=${#ss_paths[@]}
+
 
 lock_screen=false
 
@@ -45,6 +43,10 @@ get_inhibitors() {
 while :; do
   if [ "$(get_idle_minutes)" -ge $start_after ] && [ -z "$screensaver" ]; then
     if ! get_inhibitors; then
+
+      index=$(($RANDOM % $ss_count))
+      cmd=${ss_paths[$index]}
+
       gnome-session-inhibit $cmd &
       screensaver=$!
     fi
