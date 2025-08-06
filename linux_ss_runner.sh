@@ -9,13 +9,19 @@
 
 start_minutes=1 # minutes
 
+
 # The screensaver modules, and the command to run each.
-ss_paths[0]="python3 /home/rob/proj/linux_ss/kali.py"
-ss_paths[1]="python3 /home/rob/proj/linux_ss/mystify.py"
-ss_paths[2]="python3 /home/rob/proj/linux_ss/nboids.py"
-ss_paths[3]="python3 /home/rob/proj/linux_ss/particles.py"
+ss_paths=()
+ss_paths+=("python3 /home/rob/proj/linux_ss/kali.py")
+ss_paths+=("python3 /home/rob/proj/linux_ss/mystify.py")
+ss_paths+=("python3 /home/rob/proj/linux_ss/nboids.py")
+ss_paths+=("python3 /home/rob/proj/linux_ss/particles.py")
 
 ss_count=${#ss_paths[@]}
+
+# echo $ss_count
+# echo ${ss_paths[*]}
+# exit 666
 
 lock_screen=false
 

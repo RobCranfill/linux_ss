@@ -1,16 +1,25 @@
 """
 Adapted from https://github.com/avarokins/Mystify
+Very primitive!
 """
 import pygame
 import random
 import sys
 
-pygame.init()
+# region defines
+# cran: my 4K display, scaled by 1.5
+WIDTH, HEIGHT = int(3840/1.5), int(2160/1.5)
+# WIDTH = 1280
+# HEIGHT = 720
 
-WIDTH = 1280
-HEIGHT = 720
 THICKNESS = 3
 DIFFERENCE = 25
+
+
+# region code
+pygame.init()
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
+
 
 Color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 BACKGROUND_COLOR = [0, 0, 0]
@@ -18,7 +27,8 @@ BACKGROUND_COLOR = [0, 0, 0]
 surface = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 
-SPEED = int(input("Enter speed(1-5) : "))
+# SPEED = int(input("Enter speed(1-5) : "))
+SPEED = random.randint(1, 5)
 
 # Rectangle 1
 Line1 = [random.randint(0, WIDTH), random.randint(0, HEIGHT), random.randint(0, WIDTH), random.randint(0, HEIGHT)]
