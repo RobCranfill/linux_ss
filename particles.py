@@ -1,6 +1,15 @@
-"""https://pythonprogramming.altervista.org/particles-screensaver-with-pygame/"""
+"""
+ my big bang screensaver
+ based on https://pythonprogramming.altervista.org/particles-screensaver-with-pygame/
+"""
 
-import pygame, random, math
+# TODO: restart after N iterations
+
+
+import math
+import random
+import pygame
+
 
 def radians(degrees):
     return degrees*math.pi/180
@@ -11,13 +20,13 @@ class Particle:
         self.y = xy[1]
         self.speed = speed
         self.angle = angle
-        self.radius = 3
+        self.radius = radius
         self.surface = surface
         self.colour = colour
         self.rect = pygame.draw.circle(surface,(255,255,0),
                            (int(round(self.x,0)),
                             int(round(self.y,0))),
-                           self.radius)
+                            self.radius)
     def move(self):
         """ Update speed and position based on speed, angle """
         # for constant change in position values.
@@ -29,7 +38,7 @@ class Particle:
 
     def draw(self):
         """ Draw the particle on screen"""
-        pygame.draw.circle(self.surface,self.colour,self.rect.center,self.radius)
+        pygame.draw.circle(self.surface, self.colour, self.rect.center, self.radius)
 
     def bounce(self):
         """ Tests whether a particle has hit the boundary of the environment """
@@ -50,7 +59,7 @@ class Particle:
             self.y = 2*self.radius - self.y
             self.angle = math.pi - self.angle
 
-def rnd():
+def random_rgb():
     r = random.randrange(0,255)
     g = random.randrange(0,255)
     b = random.randrange(0,255)
@@ -58,32 +67,35 @@ def rnd():
 
 
 def main():
-#    xmax = 640    #width of window
-#    ymax = 480     #height of window
-    xmax = 200    #width of window
-    ymax = 200     #height of window
+
+    pygame.init()
+    screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+    clock = pygame.time.Clock()
+
+    screen_info = pygame.display.Info()
+    xmax = screen_info.current_w
+    ymax = screen_info.current_h
+
     white = (0, 0, 0)
     black = (200,0,100)
     grey = (255,255,128)
 
-    pygame.init()
-    screen = pygame.display.set_mode((0,0))
-    clock = pygame.time.Clock()
+    INITIAL_SIZE = 100
 
     particles = []
 
     for i in range(1000):
         if i % 2:
-            colour = rnd()
+            color = random_rgb()
         else:
-            colour = rnd()
+            color = random_rgb()
         # for readability
-        x = xmax / 2 + random.randint(0, xmax)
-        y = ymax / 2 + random.randint(0, ymax)
-        speed = random.randint(0,20)*0.1
+        x = xmax / 2 + random.randint(0, INITIAL_SIZE)
+        y = ymax / 2 + random.randint(0, INITIAL_SIZE)
+        speed = random.randint(0,20) * 0.1 + 0.01
         angle = random.randint(0,360)
         radius = 3
-        particles.append( Particle((x, y), radius, speed, angle, colour, screen) )
+        particles.append( Particle((x, y), radius, speed, angle, color, screen) )
 
     done = False
     while not done:
@@ -91,10 +103,9 @@ def main():
             if event.type == pygame.QUIT:
                 done = True
                 break
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    done = True
-                    break
+            elif event.type == pygame.KEYDOWN: #  and event.key == pygame.K_ESCAPE:
+                done = True
+                break
         if done:
             break
 
@@ -104,7 +115,8 @@ def main():
             p.bounce()
             p.draw()
 
-        clock.tick(40)
+        # bigger number expands faster?
+        clock.tick(80)
 
         pygame.display.flip()
     pygame.quit()

@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-# afterdark.sh: Old-school screensaver functionality for GNOME/Wayland desktops
-# This script will run arbitrary command after specified time period, if there is no inhibiting applications detected
-# Started process will be terminated at the first sight of user activity
-# You supposed to launch something like full-screen video or cmatrix :)
+# From https://gist.github.com/vdbsh/a9f0723708a4393d42a0d768d831c4df
 
-start_after=1 # minutes
+# Screensaver functionality for GNOME/Wayland desktops.
+# This script will run an arbitrary command after specified time period, 
+# if there are no inhibiting applications detected.
+# The started process will be terminated at the first user activity.
 
-# cran
-# cmd="mpv /home/test/Videos/after_dark.mp4 --fs --loop --no-osc"
-# cmd="python3 /home/rob/.local/nboids/nboids_ss.py"
+start_minutes=1 # minutes
 
-ss_paths[0]="python3 /home/rob/.local/bin/screensaver/nboids.py"
-ss_paths[1]="python3 /home/rob/.local/bin/screensaver/kali.py"
+# The screensaver modules, and the command to run each.
+ss_paths[0]="python3 /home/rob/proj/linux_ss/nboids.py"
+ss_paths[1]="python3 /home/rob/proj/linux_ss/kali.py"
+ss_paths[2]="python3 /home/rob/proj/linux_ss/mystify.py"
+ss_paths[3]="python3 /home/rob/proj/linux_ss/particles.py"
 
 ss_count=${#ss_paths[@]}
-
 
 lock_screen=false
 
@@ -41,7 +41,7 @@ get_inhibitors() {
 }
 
 while :; do
-  if [ "$(get_idle_minutes)" -ge $start_after ] && [ -z "$screensaver" ]; then
+  if [ "$(get_idle_minutes)" -ge $start_minutes ] && [ -z "$screensaver" ]; then
     if ! get_inhibitors; then
 
       index=$(($RANDOM % $ss_count))
@@ -50,7 +50,7 @@ while :; do
       gnome-session-inhibit $cmd &
       screensaver=$!
     fi
-  elif [ "$(get_idle_minutes)" -lt $start_after ] && [ -n "$screensaver" ]; then
+  elif [ "$(get_idle_minutes)" -lt $start_minutes ] && [ -n "$screensaver" ]; then
     if $lock_screen; then
       dbus-send --type=method_call --dest=org.gnome.ScreenSaver \
         /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock

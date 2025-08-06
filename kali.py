@@ -14,10 +14,11 @@ import time
 pygame.init()
 
 # Set up the display
-# WIDTH, HEIGHT = 1920, 1080
+displayInfo = pygame.display.Info()
+WIDTH, HEIGHT = displayInfo.current_w, displayInfo.current_h
 
 # cran: my 4K display, scaled by 1.5
-WIDTH, HEIGHT = 3840//1.5, 2160//1.5
+# WIDTH, HEIGHT = 3840//1.5, 2160//1.5
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 pygame.display.set_caption("Screensaver Art")
