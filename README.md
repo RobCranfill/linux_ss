@@ -8,6 +8,7 @@ I then scrounged a bunch of Python/PyGame screen saver apps and incporporated th
 
 ## Requirements
  * PyGame
+ * OpelGL (for 'tnt' module only)
 
 ## Installation
 

@@ -2,7 +2,7 @@
 from https://www.reddit.com/r/pygame/comments/15xk7d1/trying_to_make_a_multimonitor_screensaver/
 and https://pastebin.com/GF2fyBPy
 
-urk - requires opengl
+requires opengl
 
 """
 
@@ -110,9 +110,15 @@ def rotation_matrix_4d(angle, axis1, axis2):
     mat[axis2, axis2] = c
     return mat
 
+
 def main():
+
     pygame.init()
-    display = (1920, 1080)
+
+    displayInfo = pygame.display.Info()
+    WIDTH, HEIGHT = displayInfo.current_w, displayInfo.current_h
+
+    display = (WIDTH, HEIGHT)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL | FULLSCREEN)
 
     gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
@@ -121,41 +127,41 @@ def main():
     clock = pygame.time.Clock()
     angle = 0
 
-    while True:
+    colors = np.array([
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 1, 0],
+        [1, 0, 1],
+        [0, 1, 1],
+        [1, 1, 1],
+        [0.5, 0.5, 0.5],
+        [1, 0.5, 0],
+        [0.5, 1, 0],
+        [0, 0.5, 1],
+        [1, 1, 0.5],
+        [1, 0.5, 1],
+        [0.5, 1, 1],
+        [1, 0.5, 0.5],
+        [0.5, 1, 0.5]
+        ])
+
+    done = False
+    while not done:
+
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                pygame.quit()
-                sys.exit()
+                done = True
+                break
 
         glRotatef(1, 3, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-        vertices_4d = tesseract_vertices()
-
-        colors = np.array([
-            [1, 0, 0],
-            [0, 1, 0],
-            [0, 0, 1],
-            [1, 1, 0],
-            [1, 0, 1],
-            [0, 1, 1],
-            [1, 1, 1],
-            [0.5, 0.5, 0.5],
-            [1, 0.5, 0],
-            [0.5, 1, 0],
-            [0, 0.5, 1],
-            [1, 1, 0.5],
-            [1, 0.5, 1],
-            [0.5, 1, 1],
-            [1, 0.5, 0.5],
-            [0.5, 1, 0.5]
-        ])
 
         _rotate_xw = rotation_matrix_4d(angle, 0, 3)
         _rotate_yw = rotation_matrix_4d(angle, 1, 3)
         _rotate_zw = rotation_matrix_4d(angle, 2, 3)
 
-        vertices_4d = vertices_4d.dot(_rotate_xw).dot(_rotate_yw).dot(_rotate_zw)
+        vertices_4d = tesseract_vertices().dot(_rotate_xw).dot(_rotate_yw).dot(_rotate_zw)
 
         vertices_3d = project_4d_to_3d(vertices_4d, 2)
         edges = tesseract_edges()
