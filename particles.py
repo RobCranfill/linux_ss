@@ -65,6 +65,23 @@ def random_rgb():
     b = random.randrange(0,255)
     return r,g,b
 
+def create_particles(n_particles, max_x, max_y, size, screen):
+
+    particles = []
+    for i in range(n_particles):
+        if i % 2:
+            color = random_rgb()
+        else:
+            color = random_rgb()
+        # for readability
+        x = max_x / 2 + random.randint(0, size)
+        y = max_y / 2 + random.randint(0, size)
+        speed = random.randint(0,20) * 0.1 + 0.01
+        angle = random.randint(0,360)
+        radius = 3
+        particles.append( Particle((x, y), radius, speed, angle, color, screen) )
+    return particles
+
 
 def main():
 
@@ -82,23 +99,17 @@ def main():
 
     INITIAL_SIZE = 100
 
-    particles = []
-
-    for i in range(1000):
-        if i % 2:
-            color = random_rgb()
-        else:
-            color = random_rgb()
-        # for readability
-        x = xmax / 2 + random.randint(0, INITIAL_SIZE)
-        y = ymax / 2 + random.randint(0, INITIAL_SIZE)
-        speed = random.randint(0,20) * 0.1 + 0.01
-        angle = random.randint(0,360)
-        radius = 3
-        particles.append( Particle((x, y), radius, speed, angle, color, screen) )
+    iter = 0
 
     done = False
     while not done:
+
+        if iter == 0:
+            particles = create_particles(1000, xmax, ymax, INITIAL_SIZE, screen)
+        iter += 1
+        if iter > 2000:
+            iter = 0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True

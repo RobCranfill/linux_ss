@@ -10,9 +10,9 @@
 start_minutes=1 # minutes
 
 # The screensaver modules, and the command to run each.
-ss_paths[0]="python3 /home/rob/proj/linux_ss/nboids.py"
-ss_paths[1]="python3 /home/rob/proj/linux_ss/kali.py"
-ss_paths[2]="python3 /home/rob/proj/linux_ss/mystify.py"
+ss_paths[0]="python3 /home/rob/proj/linux_ss/kali.py"
+ss_paths[1]="python3 /home/rob/proj/linux_ss/mystify.py"
+ss_paths[2]="python3 /home/rob/proj/linux_ss/nboids.py"
 ss_paths[3]="python3 /home/rob/proj/linux_ss/particles.py"
 
 ss_count=${#ss_paths[@]}

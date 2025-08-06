@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux Screen Saver
+
+[Service]
+ExecStart=/home/rob/.local/bin/linux_ss/linux_ss_runner.sh
+Type=notify
+Restart=always
+
+[Install]
+WantedBy=default.target
