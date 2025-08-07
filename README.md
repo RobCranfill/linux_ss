@@ -8,7 +8,9 @@ I then scrounged a bunch of Python/PyGame screen saver apps and incporporated th
 
 ## Requirements
  * PyGame
- * OpelGL (for 'tnt' module only)
+ * OpenGL (for 'tnt' module only)
+   * something like <code>sudo apt -y install python3-opengl</code>
+
 
 ## Installation
 
@@ -16,6 +18,7 @@ I then scrounged a bunch of Python/PyGame screen saver apps and incporporated th
     systemctl --user daemon-reload
     systemctl --user enable linux_ss.service
     systemctl --user is-enabled linux_ss.service
+
 
 ## Credits
  * script: https://gist.github.com/vdbsh/a9f0723708a4393d42a0d768d831c4df
@@ -25,9 +28,9 @@ I then scrounged a bunch of Python/PyGame screen saver apps and incporporated th
  * "particles": https://pythonprogramming.altervista.org/particles-screensaver-with-pygame/
 
 
- 
 ## Things to do
  * Make every module use the full screen, and the same 'cancel' key.
- * How to specify path to modules?
+ * How to specify path to modules as installed?
+
 
 ###### Copyright (c) 2025  rob cranfill - robcranfill at gmail.com
