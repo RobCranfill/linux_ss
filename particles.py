@@ -130,7 +130,8 @@ def main():
         clock.tick(80)
 
         pygame.display.flip()
-    pygame.quit()
+
+    # pygame.quit()
 
 if __name__ == "__main__":
     main()

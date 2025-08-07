@@ -29,7 +29,10 @@ I then scrounged a bunch of Python/PyGame screen saver apps and incporporated th
 
 
 ## Things to do
- * Make every module use the full screen, and the same 'cancel' key.
+ * Make every module use the full screen.
+ * Does Python code need to check cancel key, or will script suffice?
+   * If cancel key is needed, all moduels should use the same 'cancel' key.
+   * Cancel key may be needed when invoked as stand-alone Python.
  * How to specify path to modules as installed?
 
 
