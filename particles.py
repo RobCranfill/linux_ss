@@ -1,10 +1,8 @@
 """
  my big bang screensaver
+ (but no gravity or dark matter or anything. so not really a sim at all.)
  based on https://pythonprogramming.altervista.org/particles-screensaver-with-pygame/
 """
-
-# TODO: start particiles in a circule, not square?
-
 
 import math
 import random
@@ -70,10 +68,15 @@ def create_particles(n_particles, max_x, max_y, size, screen):
     particles = []
     for i in range(n_particles):
         color = random_rgb()
-        x = max_x / 2 + random.randint(-size//2, size//2)
-        y = max_y / 2 + random.randint(-size//2, size//2)
-        speed = random.randrange(0, 20) * 0.1 + 0.1 # no zero speed particles!
-        angle = random.randrange(0, 360)
+
+        # singularity!
+        # x = max_x / 2 + random.randint(-size//2, size//2)
+        # y = max_y / 2 + random.randint(-size//2, size//2)
+        x = max_x / 2
+        y = max_y / 2
+
+        speed = random.uniform(0, 20)
+        angle = random.uniform(0, 360)
         radius = 3
         particles.append(Particle((x, y), radius, speed, angle, color, screen))
     return particles
@@ -97,7 +100,7 @@ def main():
 
     iter_count = 0
     particles = create_particles(random.randint(500, 2000), xmax, ymax, INITIAL_SIZE, screen)
-    iter_max = random.randint(1000, 4000)
+    iter_max = random.randint(500, 1000)
 
     done = False
     while not done:
