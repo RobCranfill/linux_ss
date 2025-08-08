@@ -22,6 +22,7 @@ done
 
 cp linux_ss_runner.sh ~/.local/bin
 
+systemctl --user stop       linux_ss.service
 cp linux_ss.service ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable     linux_ss.service

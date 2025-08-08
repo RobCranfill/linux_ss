@@ -3,7 +3,7 @@ Description=Linux Screen Saver
 
 [Service]
 ExecStart=/home/rob/.local/bin/linux_ss_runner.sh
-Type=notify
+Type=simple
 Restart=always
 
 [Install]
