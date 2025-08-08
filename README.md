@@ -36,10 +36,10 @@ ww
  * Make every module use the full screen.
  * Does Python code need to check cancel key, or will script suffice?
    * If cancel key is needed, all moduels should use the same 'cancel' key.
-   * Cancel key may be needed when invoked as stand-alone Python.
+   * A cancel key may be needed when invoked as stand-alone Python.
+ * Send and handle SIGINT or another appropriate signal, instead of SIGKILL?
  * How to specify path to modules as installed?
  * Rename modules for ease of identification, copying?
    * like "module_xxx.py" ? "linux_ss_module_xxx.py"?
-
 
 ###### Copyright (c) 2025  rob cranfill - robcranfill at gmail.com

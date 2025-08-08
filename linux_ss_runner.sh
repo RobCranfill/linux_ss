@@ -9,24 +9,19 @@
 
 start_minutes=1 # minutes
 
-
 # The screensaver modules, and the command to run each.
+# (Apparently "~" will be automagically prepended to data file path?!)
 ss_paths=()
-ss_paths+=("python3 ~/.local/bin/linux_ss/kaleid.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/mystify.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/nboids_sp.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/nboids_ss.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/nodes.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/particles.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/tesseract.py")
-ss_paths+=("python3 ~/.local/bin/linux_ss/tunnel.py")
-
+ss_paths+=('python3 .local/bin/linux_ss/kaleid.py')
+ss_paths+=('python3 .local/bin/linux_ss/mystify.py')
+ss_paths+=('python3 .local/bin/linux_ss/nboids_sp.py')
+ss_paths+=('python3 .local/bin/linux_ss/nboids_ss.py')
+ss_paths+=('python3 .local/bin/linux_ss/nodes.py')
+ss_paths+=('python3 .local/bin/linux_ss/particles.py')
+ss_paths+=('python3 .local/bin/linux_ss/tesseract.py')
+ss_paths+=('python3 .local/bin/linux_ss/tunnel.py')
 
 ss_count=${#ss_paths[@]}
-
-# echo $ss_count
-# echo ${ss_paths[*]}
-# exit 666
 
 lock_screen=false
 
