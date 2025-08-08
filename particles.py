@@ -70,12 +70,12 @@ def create_particles(n_particles, max_x, max_y, size, screen):
     particles = []
     for i in range(n_particles):
         color = random_rgb()
-        x = max_x / 2 + random.randint(0, size)
-        y = max_y / 2 + random.randint(0, size)
+        x = max_x / 2 + random.randint(-size//2, size//2)
+        y = max_y / 2 + random.randint(-size//2, size//2)
         speed = random.randrange(0, 20) * 0.1 + 0.1 # no zero speed particles!
         angle = random.randrange(0, 360)
         radius = 3
-        particles.append( Particle((x, y), radius, speed, angle, color, screen) )
+        particles.append(Particle((x, y), radius, speed, angle, color, screen))
     return particles
 
 
