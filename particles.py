@@ -99,16 +99,20 @@ def main():
 
     INITIAL_SIZE = 100
 
-    iter = 0
+    iter_count = 0
+    particles = create_particles(random.randint(500, 2000), xmax, ymax, INITIAL_SIZE, screen)
+    iter_max = random.randint(1000, 4000)
 
     done = False
     while not done:
 
-        if iter == 0:
-            particles = create_particles(1000, xmax, ymax, INITIAL_SIZE, screen)
-        iter += 1
-        if iter > 2000:
-            iter = 0
+        iter_count += 1
+        if iter_count > iter_max:
+            print("Restarting!")
+            iter_count = 0
+            particles = create_particles(random.randint(500, 2000), xmax, ymax, INITIAL_SIZE, screen)
+            iter_max = random.randint(1000, 4000)
+            continue
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

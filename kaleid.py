@@ -103,7 +103,7 @@ class Kaleidoscope:
 # --- Main Loop ---
 def main():
 
-    saver = Kaleidoscope(8, 4, 12)
+    saver = Kaleidoscope(8, 4, 8)
     running = True
 
     while running:

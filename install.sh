@@ -3,6 +3,7 @@
 # install linux_ss
 
 dest=~/.local/bin/linux_ss/
+mkdir -p $dest
 
 ss_paths=()
 ss_paths+=("kaleid.py")
@@ -18,3 +19,13 @@ for f in "${ss_paths[@]}"
 do
   cp -v $f $dest
 done
+
+cp linux_ss_runner.sh ~/.local/bin
+
+cp linux_ss.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable     linux_ss.service
+# systemctl --user is-enabled linux_ss.service
+systemctl --user start      linux_ss.service
+systemctl --user status     linux_ss.service
+
