@@ -41,5 +41,6 @@ ww
  * How to specify path to modules as installed?
  * Rename modules for ease of identification, copying?
    * like "module_xxx.py" ? "linux_ss_module_xxx.py"?
+ * config file? modules, timeout, logging?
 
 ###### Copyright (c) 2025  rob cranfill - robcranfill at gmail.com

@@ -47,22 +47,22 @@ get_inhibitors() {
 }
 
 while :; do
-  if [ "$(get_idle_minutes)" -ge $start_minutes ] && [ -z "$screensaver" ]; then
+  if [ "$(get_idle_minutes)" -ge $start_minutes ] && [ -z "$ss_pid" ]; then
     if ! get_inhibitors; then
 
       index=$(($RANDOM % $ss_count))
       cmd=${ss_paths[$index]}
 
       gnome-session-inhibit $cmd &
-      screensaver=$!
+      ss_pid=$!
     fi
-  elif [ "$(get_idle_minutes)" -lt $start_minutes ] && [ -n "$screensaver" ]; then
+  elif [ "$(get_idle_minutes)" -lt $start_minutes ] && [ -n "$ss_pid" ]; then
     if $lock_screen; then
       dbus-send --type=method_call --dest=org.gnome.ScreenSaver \
         /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
     fi
-    pkill -P $screensaver
-    screensaver=""
+    pkill -P $ss_pid
+    ss_pid=""
   fi
   sleep 1
 done
