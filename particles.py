@@ -3,7 +3,7 @@
  based on https://pythonprogramming.altervista.org/particles-screensaver-with-pygame/
 """
 
-# TODO: restart after N iterations
+# TODO: start particiles in a circule, not square?
 
 
 import math
@@ -69,15 +69,11 @@ def create_particles(n_particles, max_x, max_y, size, screen):
 
     particles = []
     for i in range(n_particles):
-        if i % 2:
-            color = random_rgb()
-        else:
-            color = random_rgb()
-        # for readability
+        color = random_rgb()
         x = max_x / 2 + random.randint(0, size)
         y = max_y / 2 + random.randint(0, size)
-        speed = random.randint(0,20) * 0.1 + 0.01
-        angle = random.randint(0,360)
+        speed = random.randrange(0, 20) * 0.1 + 0.1 # no zero speed particles!
+        angle = random.randrange(0, 360)
         radius = 3
         particles.append( Particle((x, y), radius, speed, angle, color, screen) )
     return particles
