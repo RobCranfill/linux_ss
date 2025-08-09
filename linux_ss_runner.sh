@@ -53,6 +53,8 @@ while :; do
       index=$(($RANDOM % $ss_count))
       cmd=${ss_paths[$index]}
 
+      echo "$0 activating at `date`" | logger
+
       gnome-session-inhibit $cmd &
       ss_pid=$!
     fi
@@ -62,6 +64,9 @@ while :; do
         /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
     fi
     pkill -P $ss_pid
+
+    echo "$0 stopping at `date`" | logger
+
     ss_pid=""
   fi
   sleep 1

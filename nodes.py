@@ -11,6 +11,17 @@ import time
 import pygame
 from pygame import gfxdraw
 
+# # our import; this will install the handler
+import linux_ss_signal
+
+
+# import sys, signal
+# def signal_handler(sig, frame):
+#     print(f"{__name__} caught signal {sig}!")
+#     sys.exit(0)
+# signal.signal(signal.SIGTERM, signal_handler)
+# print("local signal handler installed.")
+
 
 # Initialize Pygame
 pygame.init()
@@ -148,14 +159,15 @@ def main():
 
     running = True
     while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                continue
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-                    continue
+
+        # for event in pygame.event.get():
+        #     if event.type == pygame.QUIT:
+        #         running = False
+        #         continue
+        #     elif event.type == pygame.KEYDOWN:
+        #         if event.key == pygame.K_ESCAPE:
+        #             running = False
+        #             continue
 
         saver.step()
         
