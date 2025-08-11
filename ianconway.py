@@ -56,6 +56,7 @@ class MyRect:
 
 class ScreenSaver():
     def __init__(self):
+
         # Define the colors we will use in RGB format
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
@@ -64,10 +65,9 @@ class ScreenSaver():
         self.RED = (255, 0, 0)
 
         # Set the height and width of the screen
-        self.size = [2000, 1500]
-        self.screen = pygame.display.set_mode(self.size)
-
-        pygame.display.set_caption("Example code for the draw module")
+        displayInfo = pygame.display.Info()
+        WIDTH, HEIGHT = displayInfo.current_w, displayInfo.current_h
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 
         # Loop until the user clicks the close button.
         self.done = False
@@ -170,5 +170,4 @@ if __name__ == "__main__":
 
     ss = ScreenSaver()
     ss.run()
-    # Be IDLE friendly
     pygame.quit()
