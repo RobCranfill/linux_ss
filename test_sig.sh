@@ -1,7 +1,7 @@
 #!/bin/bash
 # test sending signal to a screensaver
 
-python3 nodes.py &
+python3 ianconway.py &
 ss_pid=$!
 
 # echo PID is $ss_pid at `date`

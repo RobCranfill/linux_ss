@@ -2,11 +2,12 @@
 https://github.com/iantheconway/PygameScreensaver
 """
 
-import pygame
 import math
+
+import pygame
 import numpy as np
 
-# This will install the SIGTEM handler.
+# This will install our SIGTEM handler.
 import linux_ss_signal
 
 
@@ -131,7 +132,7 @@ class ScreenSaver():
                 if self.a < 50 and self.tilt_increase:
                     self.a += 1
                 else:
-                    self.tilt_increase
+                    self.tilt_increase = False # right?
                     self.a -= 1
                     if self.a == 0:
                         self.tilt_increase = True
