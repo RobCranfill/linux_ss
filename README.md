@@ -35,7 +35,7 @@ ww
 ## Things to do
  * Make every module use the full screen.
  * Does Python code need to check cancel key, or will script suffice?
-   * If cancel key is needed, all moduels should use the same 'cancel' key.
+   * If cancel key is needed, all modules should use the same 'cancel' key.
    * A cancel key may be needed when invoked as stand-alone Python.
  * Send and handle SIGINT or another appropriate signal, instead of SIGKILL?
  * How to specify path to modules as installed?

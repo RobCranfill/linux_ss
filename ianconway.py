@@ -6,6 +6,9 @@ import pygame
 import math
 import numpy as np
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
 
 # Initialize the game engine
 pygame.init()

@@ -11,7 +11,7 @@ import time
 import pygame
 from pygame import gfxdraw
 
-# # our import; this will install the handler
+# This will install the SIGTEM handler.
 import linux_ss_signal
 
 

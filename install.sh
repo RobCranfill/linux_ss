@@ -6,6 +6,8 @@ dest=~/.local/bin/linux_ss/
 mkdir -p $dest
 
 ss_paths=()
+
+# screensavers
 ss_paths+=("kaleid.py")
 ss_paths+=("mystify.py")
 ss_paths+=("nboids_sp.py")
@@ -14,6 +16,9 @@ ss_paths+=("nodes.py")
 ss_paths+=("particles.py")
 ss_paths+=("tesseract.py")
 ss_paths+=("tunnel.py")
+
+# support code
+ss_paths+=("linux_ss_signal.py")
 
 for f in "${ss_paths[@]}"
 do

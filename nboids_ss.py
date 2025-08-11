@@ -7,6 +7,9 @@ import math
 import random
 import pygame as pg
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
 
 BOIDZ = 200             # How many boids to spawn, too many may slow fps
 WRAP = False            # False avoids edges, True wraps to other side

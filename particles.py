@@ -8,6 +8,9 @@ import math
 import random
 import pygame
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
 
 def radians(degrees):
     return degrees*math.pi/180

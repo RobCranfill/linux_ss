@@ -6,6 +6,10 @@ import pygame
 import random
 import sys
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
+
 # region defines
 # cran: my 4K display, scaled by 1.5
 WIDTH, HEIGHT = int(3840/1.5), int(2160/1.5)

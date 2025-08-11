@@ -11,6 +11,9 @@ import random
 import pygame
 from pygame import gfxdraw
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
 
 # Initialize Pygame
 pygame.init()

@@ -8,6 +8,9 @@ import math
 import random
 import pygame as pg
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
 
 FLLSCRN = True          # True for Fullscreen, or False for Window
 BOIDZ = 200             # How many boids to spawn, too many may slow fps

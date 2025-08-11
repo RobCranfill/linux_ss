@@ -10,6 +10,8 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
 
 vertices = (
     (1, -1, -1),

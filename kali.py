@@ -10,6 +10,10 @@ from datetime import datetime
 from pygame import gfxdraw
 import time
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
+
 # Initialize Pygame
 pygame.init()
 

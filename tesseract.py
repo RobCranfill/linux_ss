@@ -13,6 +13,10 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
 
+# This will install the SIGTEM handler.
+import linux_ss_signal
+
+
 def tesseract_vertices():
     return np.array([
         [-1, -1, -1, -1],

@@ -63,9 +63,9 @@ while :; do
       dbus-send --type=method_call --dest=org.gnome.ScreenSaver \
         /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
     fi
-    pkill -P $ss_pid
 
     echo "$0 stopping at `date`" | logger
+    kill -SIGTERM $ss_pid
 
     ss_pid=""
   fi
